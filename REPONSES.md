@@ -1,40 +1,40 @@
-#Lab 2: SOA/SOAP with Java (Spring-WS)
-##Reading the Contract
-Question 1 : Identify the XSD file and explain its role
+# Lab 2: SOA/SOAP with Java (Spring-WS)
+## Reading the Contract
+### Question 1 : Identify the XSD file and explain its role
 - The XSD file "bank.xsd" is located in lab2/src/main/resources
 - The XSD defines the structure of the requests and responses for the SOAP service  It tells the service what fields exist their types and how messages should look like Basically, it is the contract that both client and server follow to communicate correctly
 
-Question 2 : List the request/response elements (names, fields, types)
+### Question 2 : List the request/response elements (names, fields, types)
  1) GetAccount : 
     - Request : GetAccountRequest 
-        accountId => string
+        - accountId => string
     - Response : GetAccountResponse
-        accountId => string
-        owner => string
-        balance => decimal
-        currency => string
+        - accountId => string 
+        - owner => string  
+       -  balance => decimal
+       -  currency => string
  2) Deposit : 
     - Request : DepositRequest 
-        accountId => string
-        amount => decimal
+        - accountId => string
+        - amount => decimal
     - Response : DepositResponse
-        newBalance => decimal
-Question 3 : Information from the WSDL
+       - newBalance => decimal
+### Question 3 : Information from the WSDL
 I identified from the WSDL :
-    - Namespace: http://example.com/bank 
-    - porType : BankPort => contains the operations :
-        1) GetAccount : 
-            - input : GetAccountRequest
-            - output : GetAccountResponse
-        2) Deposit:
-            - input : DepositRequest
-            - output : DepositResponse
-    - Endpoint URL: http://localhost:8080/ws 
-    -Binding :  SOAP 1.1 with document style 
-##Add one feature
-Question 1 : the choice of the feature :
+- Namespace:  http://example.com/bank 
+- porType :  BankPort => contains the operations :
+  - GetAccount :
+    - input : GetAccountRequest
+    - output : GetAccountResponse
+  - Deposit:
+    - input : DepositRequest
+    - output : DepositResponse
+- Endpoint URL: http://localhost:8080/ws 
+-Binding :  SOAP 1.1 with document style 
+## Add one feature
+### Question 1 : the choice of the feature :
 I added "CreateAccount" operation that allows creationg a new bank account to extend the SOAP service
-Question 2 : Update the Contract 
+### Question 2 : Update the Contract 
 - Request : 
 ```xsd
  <xsd:element name="CreateAccountRequest">
@@ -60,7 +60,7 @@ Question 2 : Update the Contract
 </xsd:element>
 
 ```
-Question 3 : Server-side Implementation
+### Question 3 : Server-side Implementation
 - Endpoint : in BankEndpoint.java
 ```java
 @PayloadRoot(namespace = NAMESPACE_URI, localPart = "CreateAccountRequest")
@@ -93,7 +93,7 @@ public Account createAccount(String accountId, String owner, BigDecimal initialB
     return acc;
   }
 ```
-Question 4 : Testing with Postman 
+### Question 4 : Testing with Postman 
 1)  Valid Case : 
  - Request : 
  ```xml
