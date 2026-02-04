@@ -15,6 +15,9 @@ import com.example.bank.ws.DepositRequest;
 import com.example.bank.ws.DepositResponse;
 import com.example.bank.ws.GetAccountRequest;
 import com.example.bank.ws.GetAccountResponse;
+import com.example.bank.ws.CreateAccountRequest;
+import com.example.bank.ws.CreateAccountResponse;
+
 
 @Endpoint
 public class BankEndpoint {
@@ -51,6 +54,21 @@ public class BankEndpoint {
     BigDecimal newBalance = bankService.deposit(request.getAccountId(), request.getAmount());
     DepositResponse resp = new DepositResponse();
     resp.setNewBalance(newBalance);
+    return resp;
+  }
+  @PayloadRoot(namespace = NAMESPACE_URI, localPart = "CreateAccountRequest")
+  @ResponsePayload
+  public CreateAccountResponse createAccount(@RequestPayload CreateAccountRequest request) {
+    Account acc = bankService.createAccount(request.getAccountId(), request.getOwner(), request.getBalance(), request.getCurrency());
+    AccountType dto = new AccountType();
+    dto.setAccountId(acc.accountId);
+    dto.setOwner(acc.owner);
+    dto.setBalance(acc.balance);
+    dto.setCurrency(acc.currency);
+
+    CreateAccountResponse resp = new CreateAccountResponse();
+    resp.setAccount(dto);
+    resp.setMessage("Welcome " + acc.owner + "! Your account has been created with ID: " + acc.accountId + " and balance: " + acc.balance + " " + acc.currency);
     return resp;
   }
 }

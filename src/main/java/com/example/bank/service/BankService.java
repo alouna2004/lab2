@@ -45,4 +45,15 @@ public class BankService {
     acc.balance = acc.balance.add(amount);
     return acc.balance;
   }
+  public Account createAccount(String accountId, String owner, BigDecimal initialBalance, String currency) {
+    if (db.containsKey(accountId)) {
+      throw new AccountAlreadyExistsException("Account already exists with accountId: " + accountId);
+    }
+    if(initialBalance == null || initialBalance.compareTo(BigDecimal.ZERO) < 0) {
+      throw new InvalidAmountException("Initial balance must be >= 0");
+    }
+    Account acc = new Account(accountId, owner, initialBalance, currency);
+    db.put(accountId, acc);
+    return acc;
+  }
 }

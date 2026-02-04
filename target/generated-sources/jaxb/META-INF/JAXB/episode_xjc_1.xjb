@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Ce fichier a été généré par Eclipse Implementation of JAXB, v3.0.2 
+Voir https://eclipse-ee4j.github.io/jaxb-ri 
+Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+Généré le : 2026.02.04 à 08:14:54 PM CET 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://example.com/bank">
+    <schemaBindings map="false">
+      <package name="com.example.bank.ws"/>
+    </schemaBindings>
+    <bindings scd="tns:GetAccountRequest">
+      <class ref="com.example.bank.ws.GetAccountRequest"/>
+    </bindings>
+    <bindings scd="tns:GetAccountResponse">
+      <class ref="com.example.bank.ws.GetAccountResponse"/>
+    </bindings>
+    <bindings scd="~tns:AccountType">
+      <class ref="com.example.bank.ws.AccountType"/>
+    </bindings>
+    <bindings scd="tns:DepositRequest">
+      <class ref="com.example.bank.ws.DepositRequest"/>
+    </bindings>
+    <bindings scd="tns:DepositResponse">
+      <class ref="com.example.bank.ws.DepositResponse"/>
+    </bindings>
+    <bindings scd="tns:CreateAccountRequest">
+      <class ref="com.example.bank.ws.CreateAccountRequest"/>
+    </bindings>
+    <bindings scd="tns:CreateAccountResponse">
+      <class ref="com.example.bank.ws.CreateAccountResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+

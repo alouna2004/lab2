@@ -45,5 +45,23 @@
       </xsd:sequence>
     </xsd:complexType>
   </xsd:element>
+  <xsd:element name="CreateAccountRequest">
+   <xsd:complexType>
+      <xsd:sequence>
+         <xsd:element name="accountId" type="xsd:string"/>
+         <xsd:element name="owner" type="xsd:string"/>
+         <xsd:element name="balance" type="xsd:decimal"/>
+         <xsd:element name="currency" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:element>
+<xsd:element name="CreateAccountResponse">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element name="account" type="tns:AccountType"/>
+      <xsd:element name="message" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
 
 </xsd:schema>
